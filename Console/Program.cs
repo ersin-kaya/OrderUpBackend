@@ -1,1 +1,3 @@
-﻿Console.WriteLine("OrderUp First Commit");
+﻿using Business.Concrete;
+using DataAccess.Concrete.InMemory;
+using Entities.Concrete;
