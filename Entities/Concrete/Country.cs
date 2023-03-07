@@ -1,5 +1,5 @@
 ﻿using System;
-using Entities.Abstract;
+using Core.Entities;
 
 namespace Entities.Concrete
 {
@@ -7,6 +7,7 @@ namespace Entities.Concrete
 	{
         public int CountryId { get; set; }
         public string CountryName { get; set; }
+        public int Priority { get; set; }
         public bool Visible { get; set; }
     }
 }

@@ -16,7 +16,14 @@ namespace Business.Concrete
 
         public void Add(Country country)
         {
-            _countryDal.Add(country);
+            if (country.CountryName.Length >= 2)
+            {
+                _countryDal.Add(country);
+            }
+            else
+            {
+                Console.WriteLine("Ülke ismi en az 2 karakter olacak şekilde girilmelidir.");
+            }
         }
 
         public void Delete(Country country)
@@ -31,7 +38,7 @@ namespace Business.Concrete
 
         public Country GetById(int countryId)
         {
-            return _countryDal.GetById(countryId);
+            return _countryDal.Get(c=>c.CountryId == countryId);
         }
 
         public void Update(Country country)

@@ -1,15 +1,11 @@
 ﻿using System;
+using Core.DataAccess;
 using Entities.Concrete;
 
 namespace DataAccess.Abstract
 {
-	public interface ICountryDal
+	public interface ICountryDal : IEntityRepository<Country>
 	{
-		List<Country> GetAll();
-		Country GetById(int countryId);
-		void Add(Country country);
-		void Update(Country country);
-		void Delete(Country country);
 	}
 }
 

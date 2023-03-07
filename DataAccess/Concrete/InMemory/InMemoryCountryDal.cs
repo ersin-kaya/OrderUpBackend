@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -30,9 +31,19 @@ namespace DataAccess.Concrete.InMemory
             _countries.Remove(countryToDelete);
         }
 
+        public Country Get(Expression<Func<Country, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Country> GetAll()
         {
             return _countries;
+        }
+
+        public List<Country> GetAll(Expression<Func<Country, bool>> filter = null)
+        {
+            throw new NotImplementedException();
         }
 
         public Country GetById(int countryId)
