@@ -2,6 +2,9 @@
 using Business.Abstract;
 using Entities.Concrete;
 using DataAccess.Abstract;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
+using Business.Constants.Messages.Concrete;
 
 namespace Business.Concrete
 {
@@ -14,36 +17,39 @@ namespace Business.Concrete
             _countryDal = countryDal;
         }
 
-        public void Add(Country country)
+        public IResult Add(Country country)
         {
             if (country.CountryName.Length >= 2)
             {
                 _countryDal.Add(country);
+                return new SuccessResult(Messages.CountryAdded);
             }
             else
             {
-                Console.WriteLine("Ülke ismi en az 2 karakter olacak şekilde girilmelidir.");
+                return new ErrorResult(Messages.CountryNameInvalid);
             }
         }
 
-        public void Delete(Country country)
+        public IResult Delete(Country country)
         {
             _countryDal.Delete(country);
+            return new SuccessResult(Messages.CountryDeleted);
         }
 
-        public List<Country> GetAll()
+        public IDataResult<List<Country>> GetAll()
         {
-            return _countryDal.GetAll();
+            return new SuccessDataResult<List<Country>>(_countryDal.GetAll(), Messages.CountriesListed);
         }
 
-        public Country GetById(int countryId)
+        public IDataResult<Country> GetById(int countryId)
         {
-            return _countryDal.Get(c=>c.CountryId == countryId);
+            return new SuccessDataResult<Country>(_countryDal.Get(c=>c.CountryId == countryId));
         }
 
-        public void Update(Country country)
+        public IResult Update(Country country)
         {
             _countryDal.Update(country);
+            return new SuccessResult(Messages.CountryUpdated);
         }
     }
 }

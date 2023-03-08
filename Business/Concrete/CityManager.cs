@@ -1,5 +1,8 @@
 ﻿using System;
 using Business.Abstract;
+using Business.Constants.Messages.Concrete;
+using Core.Utilities.Results.Abstract;
+using Core.Utilities.Results.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -15,34 +18,37 @@ namespace Business.Concrete
             _cityDal = cityDal;
         }
 
-        public void Add(City city)
+        public IResult Add(City city)
         {
             _cityDal.Add(city);
+            return new SuccessResult(Messages.CityAdded);
         }
 
-        public void Delete(City city)
+        public IResult Delete(City city)
         {
             _cityDal.Delete(city);
+            return new SuccessResult(Messages.CityDeleted);
         }
 
-        public List<City> GetAllByCountryId(int countryId)
+        public IDataResult<List<City>> GetAllByCountryId(int countryId)
         {
-            return _cityDal.GetAll(c=>c.CountryId == countryId);
+            return new SuccessDataResult<List<City>>(_cityDal.GetAll(c=>c.CountryId == countryId), Messages.CitiesListed);
         }
 
-        public City GetById(int cityId)
+        public IDataResult<City> GetById(int cityId)
         {
-            return _cityDal.Get(c=>c.CityId == cityId);
+            return new SuccessDataResult<City>(_cityDal.Get(c=>c.CityId == cityId), Messages.CityListed);
         }
 
-        public CityDetailDto GetCityDetails(int cityId)
+        public IDataResult<CityDetailDto> GetCityDetailsById(int cityId)
         {
-            return _cityDal.GetCityDetails(cityId);
+            return new SuccessDataResult<CityDetailDto>(_cityDal.GetCityDetailsById(cityId), Messages.CityDetailsListed);
         }
 
-        public void Update(City city)
+        public IResult Update(City city)
         {
             _cityDal.Update(city);
+            return new SuccessResult(Messages.CityUpdated);
         }
     }
 }

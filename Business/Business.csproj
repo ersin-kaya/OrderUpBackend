@@ -9,10 +9,18 @@
   <ItemGroup>
     <None Remove="Abstract\" />
     <None Remove="Concrete\" />
+    <None Remove="Constants\" />
+    <None Remove="Constants\Messages\" />
+    <None Remove="Constants\Messages\Abstract\" />
+    <None Remove="Constants\Messages\Concrete\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />
     <Folder Include="Concrete\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Constants\Messages\" />
+    <Folder Include="Constants\Messages\Abstract\" />
+    <Folder Include="Constants\Messages\Concrete\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj" />

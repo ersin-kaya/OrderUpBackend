@@ -8,7 +8,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCityDal : EfEntityRepositoryBase<City, OrderUpContext>, ICityDal
     {
-        public CityDetailDto GetCityDetails(int cityId)
+        public CityDetailDto GetCityDetailsById(int cityId)
         {
             using (OrderUpContext context = new OrderUpContext())
             {

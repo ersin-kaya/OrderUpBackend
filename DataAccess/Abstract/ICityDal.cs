@@ -7,7 +7,7 @@ namespace DataAccess.Abstract
 {
 	public interface ICityDal : IEntityRepository<City>
 	{
-		CityDetailDto GetCityDetails(int cityId);
+		CityDetailDto GetCityDetailsById(int cityId);
 	}
 }
 
